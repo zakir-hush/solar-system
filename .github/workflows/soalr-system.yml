@@ -17,7 +17,7 @@ jobs:
     name: Unit Testing
     strategy:
       matrix:
-        node-version: ['18', '19', '20']
+        node-version: ['18', '20']
         os: [ubuntu-latest, macos-latest]
         exclude:
         - os: macos-latest
@@ -36,9 +36,11 @@ jobs:
       run: npm install
 
     - name: Run Unit Tests
+      id: nodejs-tests
       run: npm test
 
     - name: Archive Test Results
+      if: steps.nodejs-tests.outcome == 'failure' || steps.nodejs-tests.outcome == 'success'
       uses: actions/upload-artifact@v7
       with:
         name: mocha-test-results
