@@ -88,7 +88,6 @@ jobs:
     name: Docker Build and Push
     needs: [unit-testing, code-coverage]
     permissions:
-      contents: read
       packages: write
     runs-on: ubuntu-latest
     steps:
