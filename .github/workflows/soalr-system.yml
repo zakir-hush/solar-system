@@ -18,6 +18,9 @@ jobs:
     services:
       mongo-db:
         image: zakir1386/mongo-db:non-prod
+        env:
+          MONGO_INITDB_ROOT_USERNAME: mongo-admin
+          MONGO_INITDB_ROOT_PASSWORD: mongo-pass
         ports:
           - 27017:27017
     env:
