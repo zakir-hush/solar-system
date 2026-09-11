@@ -25,8 +25,8 @@ jobs:
           - 27017:27017
     env:
       MONGO_URI: 'mongodb://localhost:27017/superData?authSource=admin'
-      MONGO_USERNAME: mongo-admin
-      MONGO_PASSWORD: mongo-pass
+      MONGO_USERNAME: ''
+      MONGO_PASSWORD: ''
 
     strategy:
       matrix:
