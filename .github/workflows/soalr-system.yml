@@ -120,9 +120,7 @@ jobs:
           ls -ltr reports-${{ githb.sha }}/
 
       - name: Upload to AWS S3
-        run: echo "Uploading....."
-
-    
+        run: echo "Uploading....."  
 
   Docker:
     name: Docker Build and Push
