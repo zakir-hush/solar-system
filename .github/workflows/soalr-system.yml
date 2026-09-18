@@ -107,7 +107,7 @@ jobs:
           name: mocha-test-results
 
       - name: Download Code Coverage Artifact
-        uses: actions/download-acrtifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: coverage-report
 
