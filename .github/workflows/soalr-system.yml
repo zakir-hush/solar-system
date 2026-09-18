@@ -94,6 +94,35 @@ jobs:
         path: coverage/lcov-report
         retention-days: 5
 
+  reports-s3:
+    needs: [code-coverage, unit testing]
+    name: AWS S3 - Upload Reports
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Download Mocha Test Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: mocha-test-results
+
+      - name: Download Code Coverage Artifact
+        uses: actions/download-acrtifact@v3
+        with:
+          name: coverage-report
+
+      - name: Merge Test Files
+        run: |
+          ls -ltr
+          mkdir reports-${{ githib.sha }}
+          mv cobertura-coverage.xml reports-${{ githib.sha }}/
+          mv test-results.xml reports-${{ githib.sha }}/
+          ls -ltr reports-${{ githb.sha }}/
+
+      - name: Upload to AWS S3
+        run: echo "Uploading....."
+
+    
+
   Docker:
     name: Docker Build and Push
     needs: [unit-testing, code-coverage]
