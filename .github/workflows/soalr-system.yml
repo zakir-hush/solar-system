@@ -96,7 +96,7 @@ jobs:
         retention-days: 5
 
   reports-s3:
-    needs: [code-coverage, unit testing]
+    needs: [code-coverage, unit-testing]
     name: AWS S3 - Upload Reports
     runs-on: ubuntu-latest
     continue-on-error: true
