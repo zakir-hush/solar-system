@@ -71,14 +71,10 @@ jobs:
       with:
         node-version: '18'
 
-    - name: cache NPM dependencies
-      uses: actions/cache@v3
+    - name: Composite Action - Cache & Install NPM Packages
+      uses: .\solar-system\.github\custom-actions\npm-action
       with:
-        path: node_modules
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-
-    - name: Install Dependencies
-      run: npm install
+        path-of-folder: node_modules
 
     - name: Run Code Coverage
       continue-on-error: true
