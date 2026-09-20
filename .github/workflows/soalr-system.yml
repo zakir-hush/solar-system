@@ -43,8 +43,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Compoite Action - Cache & Install NPM Packages
-      uses: .\.github\custom-actions\npm-action
+    - name: Composite Action - Cache & Install NPM Packages
+      uses: .\solar-system\.github\custom-actions\npm-action
       with:
         path-of-folder: node_modules
 
